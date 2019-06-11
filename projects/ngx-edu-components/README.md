@@ -8,23 +8,8 @@
 
 `npm i ngx-edu-components`
 
-## NgxEduDatepickerComponent
-
-`import { NgxEduDatepickerComponent } from 'ngx-edu-components'`<br>
-`selector: ngx-edu-datepicker`
-
-### @Inputs()
-
-yourFormGroup: FormGroup (Required)<br>
-yourFormControlName: string (Required)<br>
-placeholder: string (Optional, default: 'Fecha')
-
-## Usage
-
-1) Import the `NgxEduComponentsModule` in your module.
- > `import { NgxEduComponentsModule } from 'ngx-edu-components'`
-
- ```typescript
+## Import the module NgxEduComponentsModule
+```typescript
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -46,7 +31,20 @@ import { AppComponent } from './app.component';
 export class AppModule {}
  ```
 
- 2) In your component .ts
+## NgxEduDatepickerComponent
+
+`import { NgxEduDatepickerComponent } from 'ngx-edu-components'`<br>
+`selector: ngx-edu-datepicker`
+
+### @Inputs()
+
+yourFormGroup: FormGroup (Required)<br>
+yourFormControlName: string (Required)<br>
+placeholder: string (Optional, default: 'Fecha')
+
+## Usage
+
+1) In your component .ts
 
 ```typescript
 createFormGroup(): FormGroup {
@@ -57,13 +55,52 @@ createFormGroup(): FormGroup {
 }
 ```
 
-3) In your component .html
+2) In your component .html
 
 ```html
 <ngx-edu-datepicker
     [yourFormGroup]="dialogForm"
     [yourFormControlName]="'FechaNacimiento'"
     [placeholder]="'Fecha de nacimiento'"></ngx-edu-datepicker>
+```
+
+## NgxEduGalleryComponent
+`import { NgxEduGalleryComponent } from 'ngx-edu-components'`<br>
+`selector: ngx-edu-gallery`
+
+### @Inputs()
+
+images: ImageItem[] (Required, default: [])<br>
+imagesHeight: number (Optional, , default: 200)<br>
+defaultImageUrl: string (Required, default: '')
+
+## Usage
+
+1) In your component .ts
+
+```typescript
+this.images = [{
+    url: 'yourImageUrl1',
+    alt: 'Image 1'
+},
+{
+    url: 'yourImageUrl2',
+    alt: 'Image 2'
+},
+{
+    url: 'yourImageUrl3',
+    alt: 'Image 3'
+}];
+}
+```
+
+2) In your component .html
+
+```html
+<ngx-edu-gallery
+  [images]="images"
+  [imagesHeight]="200"
+  [defaultImageUrl]="'yourDefaultImageUrl'"></ngx-edu-gallery>
 ```
 
 ## Running the example in local env

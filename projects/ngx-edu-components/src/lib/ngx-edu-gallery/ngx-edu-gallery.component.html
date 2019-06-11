@@ -1,0 +1,19 @@
+<ul id="ngx-edu-gallery" class="ngx-edu-gallery">
+    <li *ngFor="let image of images; let i = index">
+        <mat-card>
+            <div class="image-container" *ngIf="defaultImageUrl">
+                <img
+                    src="{{image.url ? image.url : ''}}"
+                    alt="{{image.alt ? image.alt : ''}}"
+                    (error)="onError(image)"
+                    [style.height.px]="imagesHeight">
+                <div class="description">
+                    {{image.alt ? image.alt : ''}}
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!defaultImageUrl">
+                <span>El parámetro de entrada [defaultImageUrl] es requerido.</span>
+            </div>
+        </mat-card>
+    </li>
+</ul>

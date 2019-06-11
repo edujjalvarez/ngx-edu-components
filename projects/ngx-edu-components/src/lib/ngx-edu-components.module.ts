@@ -5,12 +5,14 @@ import { NgxEduComponentsComponent } from './ngx-edu-components.component';
 import { NgxEduDatepickerComponent } from './ngx-edu-datepicker/ngx-edu-datepicker.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxMaskModule } from 'ngx-mask';
-import { MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatIconModule, MatCardModule } from '@angular/material';
+import { NgxEduGalleryComponent } from './ngx-edu-gallery/ngx-edu-gallery.component';
 
 @NgModule({
 	declarations: [
 		NgxEduComponentsComponent,
 		NgxEduDatepickerComponent,
+		NgxEduGalleryComponent,
 	],
 	imports: [
 		CommonModule,
@@ -23,11 +25,13 @@ import { MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule, Mat
         MatFormFieldModule,
         MatInputModule,
         MatDatepickerModule,
-        MatIconModule,
+		MatIconModule,
+		MatCardModule,
 	],
 	exports: [
 		NgxEduComponentsComponent,
 		NgxEduDatepickerComponent,
+		NgxEduGalleryComponent,
 	]
 })
 export class NgxEduComponentsModule { }
