@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="start center" class="w-100-p" [formGroup]="yourFormGroup" *ngIf="yourFormGroup && hasProperties">
+    <div fxFlex>
+        <mat-form-field fxFlex>
+            <input matInput placeholder="{{placeholder}}" name="DisplayDate" formControlName="DisplayDate"
+                [patterns]="datePatterns" mask="A0/B0/C000" [dropSpecialCharacters]="false">
+        </mat-form-field>
+        <mat-form-field [style.visibility]="'hidden'" fxFlex="8px">
+            <input matInput placeholder="" [matDatepicker]="picker" class="w-8"
+                formControlName="{{yourFormControlName}}" (dateChange)="onDateChange($event)">
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxFlex="40px" fxLayoutAlign="center center">
+        <button mat-icon-button aria-label="Date tool" (click)="open()">
+            <mat-icon>date_range</mat-icon>
+        </button>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center" class="w-100-p" *ngIf="!yourFormGroup || !yourFormControlName">
+    <span>Los parámetros de entrada [yourFormGroup] y [yourFormControlName] son requeridos.</span>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center" class="w-100-p" *ngIf="yourFormGroup && yourFormControlName && !hasProperties">
+    <span>El parámetro de entrada [yourFormGroup] debe contener el control "{{yourFormControlName}}".</span>
+</div>
