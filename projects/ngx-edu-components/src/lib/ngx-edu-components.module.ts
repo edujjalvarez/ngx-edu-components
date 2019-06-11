@@ -5,14 +5,17 @@ import { NgxEduComponentsComponent } from './ngx-edu-components.component';
 import { NgxEduDatepickerComponent } from './ngx-edu-datepicker/ngx-edu-datepicker.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxMaskModule } from 'ngx-mask';
-import { MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatIconModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatIconModule, MatCardModule, MatDividerModule, MatTooltipModule } from '@angular/material';
 import { NgxEduGalleryComponent } from './ngx-edu-gallery/ngx-edu-gallery.component';
+import { NgxEduCropperComponent } from './ngx-edu-cropper/ngx-edu-cropper.component';
+import { AngularCropperjsModule } from 'angular-cropperjs';
 
 @NgModule({
 	declarations: [
 		NgxEduComponentsComponent,
 		NgxEduDatepickerComponent,
 		NgxEduGalleryComponent,
+		NgxEduCropperComponent,
 	],
 	imports: [
 		CommonModule,
@@ -20,6 +23,7 @@ import { NgxEduGalleryComponent } from './ngx-edu-gallery/ngx-edu-gallery.compon
         ReactiveFormsModule,
 		FlexLayoutModule,
 		NgxMaskModule.forRoot(),
+		AngularCropperjsModule,
 		MatButtonModule,
         MatMenuModule,
         MatFormFieldModule,
@@ -27,11 +31,14 @@ import { NgxEduGalleryComponent } from './ngx-edu-gallery/ngx-edu-gallery.compon
         MatDatepickerModule,
 		MatIconModule,
 		MatCardModule,
+		MatDividerModule,
+		MatTooltipModule,
 	],
 	exports: [
 		NgxEduComponentsComponent,
 		NgxEduDatepickerComponent,
 		NgxEduGalleryComponent,
+		NgxEduCropperComponent,
 	]
 })
 export class NgxEduComponentsModule { }

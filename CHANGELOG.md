@@ -1,3 +1,9 @@
+## NgxEduComponents - v1.0.3 (2019-06-11)
+
+### Features:
+
+* Added NgxEduCropperComponent
+
 ## NgxEduComponents - v1.0.2 (2019-06-11)
 
 ### Bugs:

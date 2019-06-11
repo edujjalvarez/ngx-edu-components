@@ -1,0 +1,58 @@
+<div fxLayout="row">
+    <div fxFlex="80px">
+        <button mat-icon-button aria-label="rotate left" matTooltip="Modo mover" (click)="setDragMode('move')">
+            <mat-icon>open_with</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Modo recorte" (click)="setDragMode('crop')">
+            <mat-icon>crop</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-icon-button aria-label="rotate left" matTooltip="Acercarse" (click)="zoom(0.1)">
+            <mat-icon>zoom_in</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Alejarse" (click)="zoom(-0.1)">
+            <mat-icon>zoom_out</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-icon-button aria-label="rotate left" matTooltip="Rotar a la izquierda" (click)="rotate(-90)">
+            <mat-icon>rotate_left</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Rotar a la derecha" (click)="rotate(90)">
+            <mat-icon>rotate_right</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-icon-button aria-label="rotate left" matTooltip="Mover a la izquierda" (click)="move(-10, 0)">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Mover a la derecha" (click)="move(10, 0)">
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate left" matTooltip="Mover arriba" (click)="move(0, -10)">
+            <mat-icon>arrow_upward</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Mover abajo" (click)="move(0, 10)">
+            <mat-icon>arrow_downward</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-icon-button aria-label="rotate left" matTooltip="Bloquear" (click)="disable()">
+            <mat-icon>lock</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Desbloquear" (click)="enable()">
+            <mat-icon>lock_open</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-icon-button aria-label="rotate left" matTooltip="Reiniciar" (click)="reset()">
+            <mat-icon>cached</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Limpiar" (click)="clear()">
+            <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="rotate right" matTooltip="Aplicar cambios" (click)="crop()">
+            <mat-icon>check</mat-icon>
+        </button>
+    </div>
+    <div fxFlex>
+        <angular-cropper #angularCropper [cropperOptions]="ngxEduCropperOptions" [imageUrl]="imageUrl">
+        </angular-cropper>
+    </div>
+</div>

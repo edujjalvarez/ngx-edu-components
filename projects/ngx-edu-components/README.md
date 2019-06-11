@@ -91,7 +91,6 @@ this.images = [{
     url: 'yourImageUrl3',
     alt: 'Image 3'
 }];
-}
 ```
 
 2) In your component .html
@@ -101,6 +100,37 @@ this.images = [{
   [images]="images"
   [imagesHeight]="200"
   [defaultImageUrl]="'yourDefaultImageUrl'"></ngx-edu-gallery>
+```
+
+## NgxEduCropperComponent
+`import { NgxEduCropperComponent } from 'ngx-edu-components'`<br>
+`selector: ngx-edu-cropper`
+
+### @Inputs()
+
+imageUrl: string (Required, default: '')<br>
+minContainerHeight: number (Optional, , default: 325, minimum: 325)<br>
+defaultImageUrl: string (Required, default: '')
+
+### @Outputs()
+
+onChange: EventEmitter<NgxEduCropperResponse><br>
+
+## Usage
+
+1) In your component .ts
+
+```typescript
+this.imageUrl = 'yourImageUrl';
+```
+
+2) In your component .html
+
+```html
+<ngx-edu-cropper
+  [imageUrl]="imageUrl"
+  [minContainerHeight]="325"
+  (onChange)="onChange($event)"></ngx-edu-cropper>
 ```
 
 ## Running the example in local env
