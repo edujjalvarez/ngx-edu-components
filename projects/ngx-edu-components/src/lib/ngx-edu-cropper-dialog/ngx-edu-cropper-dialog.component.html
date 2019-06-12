@@ -1,0 +1,12 @@
+<div class="ngx-edu-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <span>{{title}}</span>
+    <button mat-icon-button aria-label="close" matTooltip="{{close}}" [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<ngx-edu-cropper [imageUrl]="imageUrl" (onChange)="onChange($event)"></ngx-edu-cropper>
+<div class="ngx-edu-footer" fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="accent" (click)="save()" [disabled]="!ngxEduCropperResponse">{{accept}}</button>
+    <button mat-raised-button color="warn" class="ngx-edu-cancel"
+        [mat-dialog-close]="false">{{cancel}}</button>
+</div>

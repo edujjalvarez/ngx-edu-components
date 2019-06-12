@@ -133,6 +133,40 @@ this.imageUrl = 'yourImageUrl';
   (onChange)="onChange($event)"></ngx-edu-cropper>
 ```
 
+## NgxEduCropperDialogComponent
+
+## Usage
+
+1) In your component .ts
+
+```typescript
+@ViewChild('imageCanvas') public imageCanvas: ElementRef;
+confirmDialogRef: any;
+openCropperDialog() {
+    const config: MatDialogConfig = {
+        width: '50%',
+        disableClose: true,
+        panelClass: '',
+        data: {
+            imageUrl: 'assets/images/default/company.jpg'
+        }
+    };
+
+    this.confirmDialogRef = this.dialog.open(NgxEduCropperDialogComponent, config);
+
+    this.confirmDialogRef.afterClosed().subscribe((result: NgxEduCropperResponse | boolean) => {
+        if (!result) return;
+        this.imageCanvas.nativeElement.appendChild((<NgxEduCropperResponse>result).canvas);
+    });
+}
+```
+
+2) In your component .html
+
+```html
+<div #imageCanvas></div>
+```
+
 ## Running the example in local env
 
 * `npm i`

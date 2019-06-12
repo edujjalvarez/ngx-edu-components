@@ -1,3 +1,15 @@
+## NgxEduComponents - v1.0.5 (2019-06-12)
+
+### Bugs:
+
+* Fix error NgxEduCropperDialogComponent
+
+## NgxEduComponents - v1.0.4 (2019-06-12)
+
+### Features:
+
+* Added NgxEduCropperDialogComponent
+
 ## NgxEduComponents - v1.0.3 (2019-06-11)
 
 ### Features:
