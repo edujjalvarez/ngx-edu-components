@@ -148,7 +148,11 @@ openCropperDialog() {
         disableClose: true,
         panelClass: '',
         data: {
-            imageUrl: 'assets/images/default/company.jpg'
+            imageUrl: 'assets/images/default/company.jpg',
+            title: 'Recorde de imagen',
+            accept: 'Aceptar',
+            cancel: 'Cancelar',
+            close: 'Cerrar'
         }
     };
 

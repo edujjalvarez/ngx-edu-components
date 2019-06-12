@@ -1,3 +1,9 @@
+## NgxEduComponents - v1.0.6 (2019-06-12)
+
+### Bugs:
+
+* Fix error NgxEduDatepickerComponent when  Validators.required is not present
+
 ## NgxEduComponents - v1.0.5 (2019-06-12)
 
 ### Bugs:

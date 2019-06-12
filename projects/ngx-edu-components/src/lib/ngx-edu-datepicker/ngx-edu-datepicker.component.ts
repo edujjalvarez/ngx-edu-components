@@ -68,9 +68,14 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
                 formattedDate = date.format('DD/MM/YYYY');
             }
         }
-        const validators = this.yourFormGroup.get(this.yourFormControlName).validator({} as AbstractControl);
+        let validators = null;
+        try {
+            validators = this.yourFormGroup.get(this.yourFormControlName).validator({} as AbstractControl);
+        } catch (error) {
+            console.error('NgxEduDatepickerComponent > initialize > validators error', error);
+        }
         console.log('VALIDATORSSSSSSSSSSSSSSSSSSSSSSS', validators);
-        const formControl = validators.required ? new FormControl(formattedDate, [Validators.required, Validators.pattern(DATE_REGEXP)]) : new FormControl(formattedDate, Validators.pattern(DATE_REGEXP));
+        const formControl = validators && validators.required ? new FormControl(formattedDate, [Validators.required, Validators.pattern(DATE_REGEXP)]) : new FormControl(formattedDate, Validators.pattern(DATE_REGEXP));
         this.yourFormGroup.addControl('DisplayDate', formControl);
         this.yourFormGroup.get('DisplayDate').valueChanges.pipe(
             debounceTime(300),
