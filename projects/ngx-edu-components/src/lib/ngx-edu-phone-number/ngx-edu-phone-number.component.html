@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutAlign="start center" [formGroup]="yourFormGroup" *ngIf="yourFormGroup && countryCodeFormControlName && areaCodeFormControlName && localPhoneNumberFormControlName && countries.length > 0 && defaultCountry && hasProperties">
+    <div>
+        <button mat-button fxHide fxShow.gt-xs [matMenuTriggerFor]="countriesMenu" [disabled]="options.disabled">
+            <div fxLayout="row" fxLayoutAlign="center center" *ngIf="selectedCountry">
+                <img class="flag" [src]="selectedCountry.icon">
+                <span hidden="true" class="iso text-uppercase">+{{selectedCountry.code}}</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!selectedCountry">
+                <span>{{options.countryPlaceholder}}</span>
+            </div>
+        </button>
+        <mat-menu #countriesMenu="matMenu" [overlapTrigger]="false">
+            <button mat-menu-item *ngFor="let country of countries" (click)="setSelectedCountry(country)">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <img class="flag" [src]="country.icon">
+                    <span class="iso">{{country.name}}</span>
+                </div>
+            </button>
+        </mat-menu>
+    </div>
+    <mat-form-field fxFlex="25">
+        <input matInput placeholder="{{options.areaCodePlaceholder}}" autocomplete="off" [patterns]="areaCodePatterns" mask="X099"
+            formControlName="{{areaCodeFormControlName}}">
+    </mat-form-field>
+    <span class="prefix" fxLayoutGap="12px">{{options.prefix}}</span>
+    <mat-form-field fxFlex="40">
+        <input matInput placeholder="{{options.numberPlaceholder}}" mask="000000999" formControlName="{{localPhoneNumberFormControlName}}">
+    </mat-form-field>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center" *ngIf="!yourFormGroup || !countryCodeFormControlName || !areaCodeFormControlName || !localPhoneNumberFormControlName || countries.length == 0 || !defaultCountry">
+    <span>Los parámetros de entrada [yourFormGroup], [countryCodeFormControlName], [areaCodeFormControlName], [localPhoneNumberFormControlName], [countries] y [defaultCountry] son requeridos.</span>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center" *ngIf="yourFormGroup && countryCodeFormControlName && areaCodeFormControlName && localPhoneNumberFormControlName && countries.length > 0 && defaultCountry && !hasProperties">
+    <span>El parámetro de entrada [yourFormGroup] debe contener los controles "{{countryCodeFormControlName}}", "{{areaCodeFormControlName}}" y "{{localPhoneNumberFormControlName}}".</span>
+</div>

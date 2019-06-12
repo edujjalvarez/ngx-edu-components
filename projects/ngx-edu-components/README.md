@@ -171,6 +171,80 @@ openCropperDialog() {
 <div #imageCanvas></div>
 ```
 
+## NgxEduPhoneNumberComponent
+
+### @Inputs()
+
+yourFormGroup: FormGroup (Required)<br>
+countryCodeFormControlName: string (Required)<br>
+areaCodeFormControlName: string (Required)<br>
+localPhoneNumberFormControlName: string (Required)<br>
+countries: Country[] (Required)<br>
+defaultCountry: Country (Required)<br>
+selectedCountry: Country (Optional, default: null)<br>
+options: PhoneNumberOptions (Optional, default: {
+    disabled: false,
+    countryPlaceholder: 'País',
+    areaCodePlaceholder: 'Código',
+    prefix: '15',
+    numberPlaceholder: 'Número'
+};)
+
+## Usage
+
+1) In your component .ts
+
+```typescript
+// Set your countries
+this.yourCountries = [
+    {
+        id: 'ar',
+        name: 'Argentina',
+        icon: 'assets/images/flags/ar32.png',
+        code: '549'
+    },
+    {
+        id: 'br',
+        name: 'Brasil',
+        icon: 'assets/images/flags/br32.png',
+        code: '55'
+    }
+];
+// Set your default country
+this.yourDefaultCountry = this.yourCountries[0];
+
+// Default Options
+this.yourOptions = {
+    disabled: false,
+    countryPlaceholder: 'País',
+    areaCodePlaceholder: 'Código',
+    prefix: '15',
+    numberPlaceholder: 'Número'
+};
+
+createFormGroup(): FormGroup {
+    return this._formBuilder.group({
+        ...,
+        countryCode: ['', Validators.required],
+        areaCode: ['', Validators.required],
+        localPhoneNumber: ['', Validators.required],
+    });
+}
+```
+
+2) In your component .html
+
+```html
+<ngx-edu-phone-number
+    [yourFormGroup]="nameOfYourFormGroup"
+    [countryCodeFormControlName]="'countryCode'"
+    [areaCodeFormControlName]="'areaCode'"
+    [localPhoneNumberFormControlName]="'localPhoneNumber'"
+    [countries]="yourCountries"
+    [defaultCountry]="yourDefaultCountry"
+    [options]="yourOptions"></ngx-edu-phone-number>
+```
+
 ## Running the example in local env
 
 * `npm i`

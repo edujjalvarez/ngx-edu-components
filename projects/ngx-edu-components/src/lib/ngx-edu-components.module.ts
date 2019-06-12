@@ -10,6 +10,7 @@ import { NgxEduGalleryComponent } from './ngx-edu-gallery/ngx-edu-gallery.compon
 import { NgxEduCropperComponent } from './ngx-edu-cropper/ngx-edu-cropper.component';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import { NgxEduCropperDialogComponent } from './ngx-edu-cropper-dialog/ngx-edu-cropper-dialog.component';
+import { NgxEduPhoneNumberComponent } from './ngx-edu-phone-number/ngx-edu-phone-number.component';
 
 @NgModule({
 	declarations: [
@@ -18,6 +19,7 @@ import { NgxEduCropperDialogComponent } from './ngx-edu-cropper-dialog/ngx-edu-c
 		NgxEduGalleryComponent,
 		NgxEduCropperComponent,
 		NgxEduCropperDialogComponent,
+		NgxEduPhoneNumberComponent,
 	],
 	imports: [
 		CommonModule,
@@ -42,6 +44,7 @@ import { NgxEduCropperDialogComponent } from './ngx-edu-cropper-dialog/ngx-edu-c
 		NgxEduDatepickerComponent,
 		NgxEduGalleryComponent,
 		NgxEduCropperComponent,
+		NgxEduPhoneNumberComponent,
 	],
 	entryComponents: [
 		NgxEduCropperDialogComponent,

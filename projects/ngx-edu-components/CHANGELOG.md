@@ -1,3 +1,15 @@
+## NgxEduComponents - v1.0.9 (2019-06-12)
+
+### Bugs:
+
+* Fix error NgxEduPhoneNumberComponent.
+
+## NgxEduComponents - v1.0.8 (2019-06-12)
+
+### Features:
+
+* Added NgxEduPhoneNumberComponent
+
 ## NgxEduComponents - v1.0.7 (2019-06-12)
 
 ### Bugs:
