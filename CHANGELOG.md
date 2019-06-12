@@ -1,3 +1,9 @@
+## NgxEduComponents - v1.0.7 (2019-06-12)
+
+### Bugs:
+
+* Fix error in NgxEduDatepickerComponent when use multiple components in the same FormGroup.
+
 ## NgxEduComponents - v1.0.6 (2019-06-12)
 
 ### Bugs:

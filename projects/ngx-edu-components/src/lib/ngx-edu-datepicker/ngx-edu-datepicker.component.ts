@@ -76,12 +76,12 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
         }
         console.log('VALIDATORSSSSSSSSSSSSSSSSSSSSSSS', validators);
         const formControl = validators && validators.required ? new FormControl(formattedDate, [Validators.required, Validators.pattern(DATE_REGEXP)]) : new FormControl(formattedDate, Validators.pattern(DATE_REGEXP));
-        this.yourFormGroup.addControl('DisplayDate', formControl);
-        this.yourFormGroup.get('DisplayDate').valueChanges.pipe(
+        this.yourFormGroup.addControl(`${this.yourFormControlName}DisplayDate`, formControl);
+        this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`).valueChanges.pipe(
             debounceTime(300),
             distinctUntilChanged()
         ).subscribe(value => {
-            if (value && this.yourFormGroup.get('DisplayDate').valid) {
+            if (value && this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`).valid) {
                 console.log('DateToolComponent > initialize > Fecha válidaaaaaaa....');
                 const date = moment(value, 'DD/MM/YYYY');
                 if (date.isValid()) {
@@ -102,6 +102,6 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
         console.log('DateToolComponent > onDateChange > $event', $event);
         const date = moment($event.value).format('DD/MM/YYYY');
         console.log('DateToolComponent > onDateChange > date', date);
-        this.yourFormGroup.get('DisplayDate').setValue(date);
+        this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`).setValue(date);
     }
 }
