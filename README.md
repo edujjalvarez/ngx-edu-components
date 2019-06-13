@@ -245,6 +245,96 @@ createFormGroup(): FormGroup {
     [options]="yourOptions"></ngx-edu-phone-number>
 ```
 
+## NgxEduSelectComponent
+
+### @Inputs()
+
+yourFormGroup: FormGroup (Required)<br>
+yourFormControlName: string (Required)<br>
+multiple: boolean (Optional, default: false)<br>
+placeholder: string (Optional, default: '')<br>
+filterPlaceholder: string (Optional, default: 'Buscar...')<br>
+selectAnOption: any[] (Optional, default: '')<br>
+options: Country (Required, default: [])<br>
+displayOption: any[] (Optional, default: '')<br>
+compareWith: Function (Required)<br>
+
+### @Outputs()
+
+onChange: EventEmitter<any><br>
+
+## Usage
+
+1) In your component .ts
+
+```typescript
+export class AppComponent {
+	options: any[] = [
+		{
+			id: '1',
+			name: 'Opción 1',
+			description: 'Descripción 1'
+		},
+		{
+			id: '2',
+			name: 'Opción 2',
+			description: 'Descripción 2'
+		},
+		{
+			id: '3',
+			name: 'Opción 3',
+			description: 'Descripción 3'
+		},
+		{
+			id: '4',
+			name: 'Opción 4',
+			description: 'Descripción 4'
+		},
+		{
+			id: '5',
+			name: 'Opción 5',
+			description: 'Descripción 5'
+		}
+	];
+	myFormGroup: FormGroup;
+
+	constructor(
+		private _formBuilder: FormBuilder,
+	) {
+		const selectedOptions = [this.options[2], this.options[4]]
+		this.myFormGroup = this._formBuilder.group({
+			// Option: [this.options[3]],
+			Option: [this.options[3], [Validators.required]],
+			// Options: [selectedOptions],
+			Options: [selectedOptions, [Validators.required]],
+        });
+	}
+
+	compareFn(v1: any, v2: any): boolean {
+        return v1 && v2 ? v1.id === v2.id : v1 === v2;
+	}
+	
+	getFormGroupValues() {
+		const rawValue = this.myFormGroup.getRawValue();
+		console.log('AppComponent > getFormGroupValues > rawValue', rawValue);
+	}
+}
+```
+
+2) In your component .html
+
+```html
+<ngx-edu-select [yourFormGroup]="myFormGroup" [yourFormControlName]="'Option'" [options]="options"
+    [displayOption]="'name'" [placeholder]="'Librería'" [selectAnOption]="'Seleccione una opción'"
+    [compareWith]="compareFn"></ngx-edu-select>
+
+<ngx-edu-select [yourFormGroup]="myFormGroup" [yourFormControlName]="'Options'" [options]="options"
+    [displayOption]="'name'" [placeholder]="'Librería'" [multiple]="true"
+    [compareWith]="compareFn"></ngx-edu-select>
+
+<button (click)="getFormGroupValues()">Get FormGroup Values</button>
+```
+
 ## Running the example in local env
 
 * `npm i`

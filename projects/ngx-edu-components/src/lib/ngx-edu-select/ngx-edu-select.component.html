@@ -1,0 +1,33 @@
+<div [formGroup]="yourFormGroup" *ngIf="yourFormGroup && yourFormControlName && options.length > 0 && displayOption && compareWith && hasFormControls">
+    <mat-form-field class="w-100-p">
+        <mat-select *ngIf="!multiple"
+            formControlName="{{yourFormControlName}}"
+            placeholder="{{placeholder}}"
+            [compareWith]="compareWith"
+            (selectionChange)="onSelectionChange($event)"
+            (openedChange)="onOpenedChange($event)">
+            <input #filterInput matInput class="filter" placeholder="{{filterPlaceholder}}" formControlName="{{yourFormControlName}}Filter">
+            <mat-option *ngIf="selectAnOption">{{selectAnOption}}</mat-option>
+            <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                {{option[displayOption] ? option[displayOption] : 'Display option not exists.'}}
+            </mat-option>
+        </mat-select>
+        <mat-select *ngIf="multiple"
+            formControlName="{{yourFormControlName}}"
+            placeholder="{{placeholder}}"
+            [compareWith]="compareWith"
+            (selectionChange)="onSelectionChange($event)"
+            (openedChange)="onOpenedChange($event)" multiple>
+            <input #filterInput matInput class="filter" placeholder="{{filterPlaceholder}}" formControlName="{{yourFormControlName}}Filter">
+            <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                {{option[displayOption] ? option[displayOption] : 'Display option not exists.'}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div fxLayoutAlign="center center" *ngIf="!yourFormGroup || !yourFormControlName || options.length == 0 || !displayOption || !compareWith">
+    <span>Los parámetros de entrada [yourFormGroup], [yourFormControlName], [options], [displayOption] y [compareWith] son requeridos.</span>
+</div>
+<div fxLayoutAlign="center center" *ngIf="yourFormGroup && yourFormControlName && options.length > 0 && displayOption && compareWith && !hasFormControls">
+    <span>El parámetro de entrada [yourFormGroup] debe contener el control "{{yourFormControlName}}".</span>
+</div>

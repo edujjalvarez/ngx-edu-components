@@ -1,3 +1,9 @@
+## NgxEduComponents - v1.0.11 (2019-06-13)
+
+### Features:
+
+* Added NgxEduSelectComponent
+
 ## NgxEduComponents - v1.0.9 (2019-06-12)
 
 ### Bugs:
