@@ -99,7 +99,9 @@ export class NgxEduSelectComponent implements OnInit, OnChanges, OnDestroy {
             if (typeof (o) == 'object') {
                 let result = false;
                 for (const key in o) {
-                    result = o[key].toString().toLowerCase().indexOf(value.toLowerCase()) >= 0;
+                    if (o[key] && typeof(o[key]) == 'string') {
+                        result = o[key].toString().toLowerCase().indexOf(value.toLowerCase()) >= 0;
+                    }
                     if (result) {
                         break;
                     }
