@@ -142,8 +142,8 @@ export class NgxEduSelectComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     onOpenedChange($event) {
-        this.yourFormGroup.get(`${this.yourFormControlName}Filter`).setValue('');
         if ($event) {
+            this.yourFormGroup.get(`${this.yourFormControlName}Filter`).setValue('');
             this.filterInput.nativeElement.focus();
         }        
     }

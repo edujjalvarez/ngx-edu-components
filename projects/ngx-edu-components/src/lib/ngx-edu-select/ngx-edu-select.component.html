@@ -25,8 +25,8 @@
         </mat-select>
     </mat-form-field>
 </div>
-<div fxLayoutAlign="center center" *ngIf="!yourFormGroup || !yourFormControlName || options.length == 0 || !displayOption || !compareWith">
-    <span>Los parámetros de entrada [yourFormGroup], [yourFormControlName], [options], [displayOption] y [compareWith] son requeridos.</span>
+<div fxLayoutAlign="center center" *ngIf="!yourFormGroup || !yourFormControlName || !displayOption || !compareWith">
+    <span>Los parámetros de entrada [yourFormGroup], [yourFormControlName], [displayOption] y [compareWith] son requeridos.</span>
 </div>
 <div fxLayoutAlign="center center" *ngIf="yourFormGroup && yourFormControlName && options.length > 0 && displayOption && compareWith && !hasFormControls">
     <span>El parámetro de entrada [yourFormGroup] debe contener el control "{{yourFormControlName}}".</span>
