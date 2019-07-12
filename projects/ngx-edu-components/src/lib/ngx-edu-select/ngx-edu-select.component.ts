@@ -44,7 +44,10 @@ export class NgxEduSelectComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnChanges() {
-
+        this.filteredOptions = this.options;
+        if (this.yourFormGroup && this.yourFormGroup.get(`${this.yourFormControlName}Filter`)) {
+            this.yourFormGroup.get(`${this.yourFormControlName}Filter`).setValue(this.yourFormGroup.get(`${this.yourFormControlName}Filter`).value);
+        }
     }
 
     ngOnDestroy() {
