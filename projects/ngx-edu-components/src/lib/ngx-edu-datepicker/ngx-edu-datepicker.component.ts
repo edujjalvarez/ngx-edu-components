@@ -47,7 +47,7 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnChanges() {
-
+        // this.refresh();
     }
 
     ngOnDestroy() {
@@ -82,7 +82,7 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
             distinctUntilChanged()
         ).subscribe(value => {
             if (value && this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`).valid) {
-                console.log('DateToolComponent > initialize > Fecha válidaaaaaaa....');
+                console.log('NgxEduDatepickerComponent > initialize > Fecha válidaaaaaaa....');
                 const date = moment(value, 'DD/MM/YYYY');
                 if (date.isValid()) {
                     this.yourFormGroup.get(this.yourFormControlName).setValue(date.toDate());
@@ -103,5 +103,21 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
         const date = moment($event.value).format('DD/MM/YYYY');
         console.log('DateToolComponent > onDateChange > date', date);
         this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`).setValue(date);
+    }
+
+    public refresh() {
+        console.log('NgxEduDatepickerComponent > refresh');
+        if (this.yourFormGroup &&
+            this.yourFormGroup.get(this.yourFormControlName) &&
+            this.yourFormGroup.get(this.yourFormControlName).value &&
+            this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`)) {
+            const date = moment(this.yourFormGroup.get(this.yourFormControlName).value);
+            console.log('NgxEduDatepickerComponent > refresh > date', date);
+            if (date.isValid()) {
+                const formattedDate = date.format('DD/MM/YYYY');
+                console.log('NgxEduDatepickerComponent > refresh > formattedDate', formattedDate);
+                this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`).setValue(formattedDate);
+            }
+        }
     }
 }
