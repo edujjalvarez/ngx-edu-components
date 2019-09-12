@@ -43,29 +43,44 @@ export class NgxEduGalleryComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnChanges() {
+        console.log('NgxEduGalleryComponent > ngOnChanges > 1', this.images);
         if (this.images.length > 0) {
+            console.log('NgxEduGalleryComponent > ngOnChanges > 2');
             setTimeout(() => {
+                console.log('NgxEduGalleryComponent > ngOnChanges > 3');
                 this.initialize();
             }, 1000);
         }
     }
 
     ngOnDestroy() {
+        console.log('NgxEduGalleryComponent > ngOnDestroy > 1', this.gallery);
         if (this.gallery) {
+            console.log('NgxEduGalleryComponent > ngOnDestroy > 2');
             this.gallery.destroy();
         }
-    }    
+    }
 
     initialize() {
+        console.log('NgxEduGalleryComponent > initialize > 1', this.gallery);
         if (this.gallery) {
+            console.log('NgxEduGalleryComponent > initialize > 2');
             this.gallery.destroy();
         }
         this.gallery = new Viewer(document.getElementById('ngx-edu-gallery'));
+        console.log('NgxEduGalleryComponent > initialize > 3', this.gallery);
     }
 
     onError(image: ImageItem) {
         if (image) {
             image.url = this.defaultImageUrl;
         }
+    }
+
+    public show() {
+        console.log('NgxEduGalleryComponent > show > 1');
+        if (!this.gallery) return;
+        console.log('NgxEduGalleryComponent > show > 2');
+        this.gallery.show();
     }
 }
