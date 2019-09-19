@@ -1,11 +1,11 @@
-<ul id="ngx-edu-gallery" class="ngx-edu-gallery">
+<ul [id]="id" class="ngx-edu-gallery">
     <li *ngFor="let image of images; let i = index">
         <mat-card>
             <div class="image-container" *ngIf="defaultImageUrl">
                 <img
                     src="{{image.url ? image.url : ''}}"
                     alt="{{image.alt ? image.alt : ''}}"
-                    (error)="onError(image)"
+                    (error)="onError($event)"
                     [style.height.px]="imagesHeight">
                 <div class="description">
                     {{image.alt ? image.alt : ''}}

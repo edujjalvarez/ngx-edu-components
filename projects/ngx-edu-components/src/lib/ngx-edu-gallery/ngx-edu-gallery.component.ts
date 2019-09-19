@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, OnDestroy, Input } from '@angular/core';
 import { ImageItem } from './image-item';
 import Viewer from 'viewerjs';
+import * as uuid from 'uuid';
 
 /**
  * INSTRUCCIONES DE USO
@@ -26,12 +27,14 @@ import Viewer from 'viewerjs';
     styleUrls: ['ngx-edu-gallery.component.scss']
 })
 export class NgxEduGalleryComponent implements OnInit, OnChanges, OnDestroy {
+    id: string;
     gallery: any;
     @Input() images: ImageItem[];
     @Input() imagesHeight: number;
     @Input() defaultImageUrl: string;
 
     constructor() {
+        this.id = uuid.v4();
         this.gallery = null;
         this.images = [];
         this.imagesHeight = 200;
@@ -67,14 +70,13 @@ export class NgxEduGalleryComponent implements OnInit, OnChanges, OnDestroy {
             console.log('NgxEduGalleryComponent > initialize > 2');
             this.gallery.destroy();
         }
-        this.gallery = new Viewer(document.getElementById('ngx-edu-gallery'));
+        this.gallery = new Viewer(document.getElementById(this.id));
         console.log('NgxEduGalleryComponent > initialize > 3', this.gallery);
     }
 
-    onError(image: ImageItem) {
-        if (image) {
-            image.url = this.defaultImageUrl;
-        }
+    onError(event) {
+        if (!event) return;
+        event.target.src = this.defaultImageUrl;
     }
 
     public show() {
@@ -82,5 +84,12 @@ export class NgxEduGalleryComponent implements OnInit, OnChanges, OnDestroy {
         if (!this.gallery) return;
         console.log('NgxEduGalleryComponent > show > 2');
         this.gallery.show();
+    }
+
+    public view(index: number) {
+        console.log('NgxEduGalleryComponent > view > 1', this.gallery, index);
+        if (!this.gallery || index < 0) return;
+        console.log('NgxEduGalleryComponent > view > 2');
+        this.gallery.view(index);
     }
 }
