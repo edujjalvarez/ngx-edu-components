@@ -64,13 +64,16 @@ export class NgxEduGalleryComponent implements OnInit, OnChanges, OnDestroy {
         }
     }
 
-    initialize() {
+    public initialize() {
         console.log('NgxEduGalleryComponent > initialize > 1', this.gallery);
         if (this.gallery) {
             console.log('NgxEduGalleryComponent > initialize > 2');
             this.gallery.destroy();
         }
-        this.gallery = new Viewer(document.getElementById(this.id));
+        const ul = document.getElementById(this.id);
+        console.log('NgxEduGalleryComponent > initialize > 3 > ul', ul);
+        if (!ul) return; 
+        this.gallery = new Viewer(ul);
         console.log('NgxEduGalleryComponent > initialize > 3', this.gallery);
     }
 
