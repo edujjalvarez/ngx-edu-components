@@ -95,4 +95,9 @@ export class NgxEduGalleryComponent implements OnInit, OnChanges, OnDestroy {
         console.log('NgxEduGalleryComponent > view > 2');
         this.gallery.view(index);
     }
+
+    public zoom(zoom: number) {
+        if (!this.gallery) return;
+        this.gallery.zoomTo(zoom);
+    }
 }
