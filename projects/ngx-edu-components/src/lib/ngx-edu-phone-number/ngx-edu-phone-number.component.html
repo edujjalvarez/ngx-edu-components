@@ -19,12 +19,12 @@
         </mat-menu>
     </div>
     <mat-form-field fxFlex="25">
-        <input matInput placeholder="{{options.areaCodePlaceholder}}" autocomplete="off" [patterns]="areaCodePatterns" mask="X099"
+        <input matInput placeholder="{{options.areaCodePlaceholder}}" autocomplete="off" [myRegExp]="onlyNumberMax4"
             formControlName="{{areaCodeFormControlName}}">
     </mat-form-field>
     <span class="prefix" fxLayoutGap="12px">{{options.prefix}}</span>
     <mat-form-field fxFlex="40">
-        <input matInput placeholder="{{options.numberPlaceholder}}" mask="000000999" formControlName="{{localPhoneNumberFormControlName}}">
+        <input matInput placeholder="{{options.numberPlaceholder}}" formControlName="{{localPhoneNumberFormControlName}}" [myRegExp]="onlyNumberMax10">
     </mat-form-field>
 </div>
 <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!yourFormGroup || !countryCodeFormControlName || !areaCodeFormControlName || !localPhoneNumberFormControlName || countries.length == 0 || !defaultCountry">

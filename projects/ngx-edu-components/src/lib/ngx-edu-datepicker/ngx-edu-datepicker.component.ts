@@ -3,10 +3,28 @@ import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import * as moment_ from 'moment';
+import { RegExpHelper } from '../helpers/reg-exp.helper';
 const moment = moment_;
 
 const DATE_REGEXP = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
 
+/**
+ * INSTRUCCIONES DE USO
+ * 
+ * Importar en módulo CustomToolsModule en tu módulo
+ * 
+ * INPUTS
+ * yourFormGroup: FormGroup
+ * yourFormControlName: string (nombre de control de formulario)
+ * placeholder (Opcional): string (texto a mostrar)
+ * 
+ * EXAMPLE
+ * <ngx-edu-datepicker [yourFormGroup]="nameOfYourFormGroup" [yourFormControlName]="'myDate'" [placeholder]="'Fecha'"></ngx-edu-datepicker>
+ * 
+ * Obteniendo los valores
+ * const rawValue = this.nameOfYourFormGroup.getRawValue();
+ * const phoneNumber = rawValue.countryCode + rawValue.areaCode + rawValue.localPhoneNumber;
+ */
 @Component({
     selector: 'ngx-edu-datepicker',
     templateUrl: 'ngx-edu-datepicker.component.html',
@@ -18,28 +36,15 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
     @Input() yourFormControlName: string;
     @Input() placeholder: string;
     
-    datePatterns: any;
     hasProperties: boolean;
+    dateKeypress: RegExp;
 
     constructor() {
         this.yourFormGroup = null;
         this.yourFormControlName = '';
         this.placeholder = 'Fecha';
-        this.datePatterns = {
-            "A": {
-                pattern: new RegExp('\[0-3\]')
-            },
-            "0": {
-                pattern: new RegExp('\[0-9\]')
-            },
-            "B": {
-                pattern: new RegExp('\[0-1\]')
-            },
-            "C": {
-                pattern: new RegExp('\[1-9\]')
-            }
-        };
         this.hasProperties = false;
+        this.dateKeypress = RegExpHelper.DATE_KEYPRESS;
     }
 
     ngOnInit() {

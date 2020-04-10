@@ -13,6 +13,7 @@ import { NgxEduCropperDialogComponent } from './ngx-edu-cropper-dialog/ngx-edu-c
 import { NgxEduPhoneNumberComponent } from './ngx-edu-phone-number/ngx-edu-phone-number.component';
 import { NgxEduSelectComponent } from './ngx-edu-select/ngx-edu-select.component';
 import { NgxEduFromToComponent } from './ngx-edu-from-to/ngx-edu-from-to.component';
+import { MyRegExpDirective } from './directives/my-reg-exp.directive';
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { NgxEduFromToComponent } from './ngx-edu-from-to/ngx-edu-from-to.compone
 		NgxEduPhoneNumberComponent,
 		NgxEduSelectComponent,
 		NgxEduFromToComponent,
+		MyRegExpDirective,
 	],
 	imports: [
 		CommonModule,
@@ -52,6 +54,7 @@ import { NgxEduFromToComponent } from './ngx-edu-from-to/ngx-edu-from-to.compone
 		NgxEduPhoneNumberComponent,
 		NgxEduSelectComponent,
 		NgxEduFromToComponent,
+		MyRegExpDirective,
 	],
 	entryComponents: [
 		NgxEduCropperDialogComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, OnDestroy, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Country } from './country';
 import { PhoneNumberOptions } from './phone-number-options';
+import { RegExpHelper } from '../helpers/reg-exp.helper';
 
 /**
  * INSTRUCCIONES DE USO
@@ -22,8 +23,8 @@ import { PhoneNumberOptions } from './phone-number-options';
  * 
  * Ejemplo de controles en tu FormGroup
  * 'countryCode': [this.data.driver.countryCode, [Validators.required]],
- * 'areaCode': [this.data.driver.areaCode, [Validators.required]],
- * 'localPhoneNumber': [this.data.driver.localPhoneNumber, [Validators.required]],
+ * 'areaCode': [this.data.driver.areaCode, [Validators.required, Validators.minLength(2), Validators.maxLength(4), Validators.pattern(RegExpHelper.AREA_CODE)]],
+ * 'localPhoneNumber': [this.data.driver.localPhoneNumber, [Validators.required, Validators.minLength(6), Validators.maxLength(9), Validators.pattern(RegExpHelper.LOCAL_PHONE_NUMBER)]],
  * 
  * Obteniendo los valores
  * const rawValue = this.nameOfYourFormGroup.getRawValue();
@@ -44,8 +45,9 @@ export class NgxEduPhoneNumberComponent implements OnInit, OnChanges, OnDestroy 
     @Input() defaultCountry: Country;
     @Input() options: PhoneNumberOptions;
 
-    areaCodePatterns: any;
     hasProperties: boolean;
+    onlyNumberMax4: RegExp;
+    onlyNumberMax10: RegExp;
 
     constructor() {
         this.yourFormGroup = null;
@@ -56,19 +58,9 @@ export class NgxEduPhoneNumberComponent implements OnInit, OnChanges, OnDestroy 
         this.selectedCountry = null;
         this.defaultCountry = null;
         this.options = new PhoneNumberOptions();
-        this.areaCodePatterns = {
-            'X': {
-                pattern: new RegExp('\[1-9\]')
-            },
-            '0': {
-                pattern: new RegExp('\[0-9\]')
-            },
-            '9': {
-                pattern: new RegExp('\[0-9\]'),
-                optional: true
-            }
-        };        
         this.hasProperties = false;
+        this.onlyNumberMax4 = RegExpHelper.ONLY_NUMBER_MAX_4;
+        this.onlyNumberMax10 = RegExpHelper.ONLY_NUMBER_MAX_10;
     }
 
     ngOnInit() {

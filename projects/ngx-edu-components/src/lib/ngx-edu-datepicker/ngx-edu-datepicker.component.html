@@ -2,7 +2,7 @@
     <div fxFlex>
         <mat-form-field fxFlex>
             <input matInput placeholder="{{placeholder}}" name="{{yourFormControlName}}DisplayDate" formControlName="{{yourFormControlName}}DisplayDate"
-                [patterns]="datePatterns" mask="A0/B0/C000" [dropSpecialCharacters]="false">
+                [myRegExp]="dateKeypress">
         </mat-form-field>
         <mat-form-field [style.visibility]="'hidden'" fxFlex="8px">
             <input matInput placeholder="" [matDatepicker]="picker" class="w-8"
