@@ -6,7 +6,7 @@ import * as moment_ from 'moment';
 import { RegExpHelper } from '../helpers/reg-exp.helper';
 const moment = moment_;
 
-const DATE_REGEXP = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+// const DATE_REGEXP = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
 
 /**
  * INSTRUCCIONES DE USO
@@ -80,7 +80,7 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
             console.error('NgxEduDatepickerComponent > initialize > validators error', error);
         }
         console.log('VALIDATORSSSSSSSSSSSSSSSSSSSSSSS', validators);
-        const formControl = validators && validators.required ? new FormControl(formattedDate, [Validators.required, Validators.pattern(DATE_REGEXP)]) : new FormControl(formattedDate, Validators.pattern(DATE_REGEXP));
+        const formControl = validators && validators.required ? new FormControl(formattedDate, [Validators.required, Validators.pattern(RegExpHelper.DATE_ES_AR)]) : new FormControl(formattedDate, Validators.pattern(RegExpHelper.DATE_ES_AR));
         this.yourFormGroup.addControl(`${this.yourFormControlName}DisplayDate`, formControl);
         this.yourFormGroup.get(`${this.yourFormControlName}DisplayDate`).valueChanges.pipe(
             debounceTime(300),
