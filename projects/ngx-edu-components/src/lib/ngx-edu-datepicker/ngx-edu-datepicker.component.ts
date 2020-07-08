@@ -91,10 +91,10 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
     try {
       disabled = this.yourFormGroup.get(this.yourFormControlName).disabled;
     } catch (error) {
-      console.error(
-        "NgxEduDatepickerComponent > initialize > validators error",
-        error
-      );
+      //   console.error(
+      //     "NgxEduDatepickerComponent > initialize > validators error",
+      //     error
+      //   );
     }
     let validators = null;
     try {
@@ -102,10 +102,10 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
         .get(this.yourFormControlName)
         .validator({} as AbstractControl);
     } catch (error) {
-      console.error(
-        "NgxEduDatepickerComponent > initialize > validators error",
-        error
-      );
+      //   console.error(
+      //     "NgxEduDatepickerComponent > initialize > validators error",
+      //     error
+      //   );
     }
     console.log("VALIDATORSSSSSSSSSSSSSSSSSSSSSSS", validators);
     const formControl =
