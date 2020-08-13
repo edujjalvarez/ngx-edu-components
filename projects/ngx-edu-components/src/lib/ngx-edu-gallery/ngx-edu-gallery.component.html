@@ -1,19 +1,31 @@
 <ul [id]="id" class="ngx-edu-gallery">
-    <li *ngFor="let image of images; let i = index">
-        <mat-card>
-            <div class="image-container" *ngIf="defaultImageUrl">
-                <img
-                    src="{{image.url ? image.url : ''}}"
-                    alt="{{image.alt ? image.alt : ''}}"
-                    (error)="onError($event)"
-                    [style.height.px]="imagesHeight">
-                <div class="description">
-                    {{image.alt ? image.alt : ''}}
-                </div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!defaultImageUrl">
-                <span>El parámetro de entrada [defaultImageUrl] es requerido.</span>
-            </div>
-        </mat-card>
-    </li>
+  <li *ngFor="let image of images; let i = index">
+    <mat-card>
+      <div class="image-container" *ngIf="defaultImageUrl">
+        <mat-icon
+          class="remove-image"
+          matTooltip="Quitar"
+          (click)="remove(image, i)"
+          *ngIf="galleryOptions.showRemoveImage"
+          >cancel</mat-icon
+        >
+        <img
+          src="{{ image.url ? image.url : '' }}"
+          alt="{{ image.alt ? image.alt : '' }}"
+          (error)="onError($event)"
+          [style.height.px]="imagesHeight"
+        />
+        <div class="description" *ngIf="galleryOptions.showAlt">
+          {{ image.alt ? image.alt : "" }}
+        </div>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        *ngIf="!defaultImageUrl"
+      >
+        <span>El parámetro de entrada [defaultImageUrl] es requerido.</span>
+      </div>
+    </mat-card>
+  </li>
 </ul>
