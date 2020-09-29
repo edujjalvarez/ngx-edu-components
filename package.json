@@ -1,6 +1,6 @@
 {
   "name": "mat-edu-components-library",
-  "version": "1.0.49",
+  "version": "1.0.51",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
