@@ -47,6 +47,7 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() yourFormGroup: FormGroup;
   @Input() yourFormControlName: string;
   @Input() placeholder: string;
+  @Input() maxDate: Date;
 
   hasProperties: boolean;
   dateKeypress: RegExp;
@@ -57,6 +58,7 @@ export class NgxEduDatepickerComponent implements OnInit, OnChanges, OnDestroy {
     this.placeholder = "Fecha";
     this.hasProperties = false;
     this.dateKeypress = RegExpHelper.DATE_KEYPRESS;
+    this.maxDate = null;
   }
 
   ngOnInit() {

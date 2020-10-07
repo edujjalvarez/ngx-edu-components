@@ -20,9 +20,20 @@
         matInput
         placeholder=""
         [matDatepicker]="picker"
+        [max]="maxDate"
         class="w-8"
         formControlName="{{ yourFormControlName }}"
         (dateChange)="onDateChange($event)"
+        *ngIf="maxDate"
+      />
+      <input
+        matInput
+        placeholder=""
+        [matDatepicker]="picker"
+        class="w-8"
+        formControlName="{{ yourFormControlName }}"
+        (dateChange)="onDateChange($event)"
+        *ngIf="!maxDate"
       />
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
